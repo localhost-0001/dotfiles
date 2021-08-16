@@ -25,8 +25,8 @@ in
 
       home.file = {
         ".mozzila/firefox/main/user.js".source = ./firefox/user.js;
-        # ".minecraft/options.txt".source = ./minecraft/options.txt;
-        # ".config/Code/User/settings.json".source = ./vscode/settings.json;
+        ".minecraft/options.txt".source = ./minecraft/options.txt;
+        ".config/Code/User/settings.json".source = ./vscode/settings.json;
       };
     };
 }
