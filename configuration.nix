@@ -42,4 +42,7 @@
     device = "/dev/disk/by-label/hdd";
     fsType = "ext4";
   };
+
+  # Sudoedit is very useful
+  environment.variables.EDITOR = "code";
 }
