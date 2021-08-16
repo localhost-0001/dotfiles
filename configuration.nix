@@ -33,7 +33,7 @@
   [
     firefox spotify discord
     alacritty
-    git gcmcore
+    git
     minecraft multimc
   ];
 
