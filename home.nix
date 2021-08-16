@@ -22,11 +22,5 @@ in
           credential.helper = "${pkgs.git.override { withLibsecret = true; }}/bin/git-credential-libsecret";
         };
       };
-
-      home.file = {
-        ".mozzila/firefox/main/user.js".source = ./firefox/user.js;
-        ".minecraft/options.txt".source = ./minecraft/options.txt;
-        ".config/Code/User/settings.json".source = ./vscode/settings.json;
-      };
     };
 }
