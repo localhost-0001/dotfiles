@@ -29,7 +29,7 @@
   };
 
   # Package management
-  environment.systemPackages = with pkgs; 
+  environment.systemPackages = with pkgs;
   [
     firefox spotify discord
     alacritty
@@ -38,11 +38,11 @@
   ];
 
   # I don't really have much to do with my HDD so I mount it to its own directory
-  fileSystems."/home/henry/hdd" = { 
+  fileSystems."/home/henry/hdd" = {
     device = "/dev/disk/by-label/hdd";
     fsType = "ext4";
   };
 
   # Sudoedit is very useful
-  environment.variables.EDITOR = "code";
+  environment.variables.SUDO_EDITOR = "code --wait";
 }
