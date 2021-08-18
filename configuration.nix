@@ -3,6 +3,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./home
+    ./display/xmonad.nix
   ];
 
   # Allow unfree packages
@@ -14,22 +15,19 @@
   # Enables UEFI boot
   boot.loader.systemd-boot.enable = true;
 
-  # Enabling GNOME
-  services.xserver.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
-  # Disable default GNOME apps
-  services.gnome.core-utilities.enable = false;
-
   # Defining users
   users.users.henry = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
   };
 
+  # Enable audio
+  hardware.pulseaudio.enable = true;
+
   # Package management
   environment.systemPackages = with pkgs;
   [
+    haskellPackages.xmobar
     firefox spotify discord
     alacritty
     git

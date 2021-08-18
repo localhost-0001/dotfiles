@@ -13,5 +13,7 @@ in
     ./vscode
     ./minecraft
     ./git
+    ./xmonad
+    ./rofi
   ];
 }
