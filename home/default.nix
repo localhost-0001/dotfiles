@@ -12,7 +12,6 @@ in
     ./firefox
     ./vscode
     ./minecraft
-    ./git
     ./xmonad
     ./rofi
   ];
