@@ -236,6 +236,10 @@
       # END: BETTERFOX
 
       # Poultryghast's config starts here
+
+      # Disable picture-in-picture mode
+      "media.videocontrols.picture-in-picture.video-toggle.enabled" = false;
+
       # Dark mode
       "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
 
