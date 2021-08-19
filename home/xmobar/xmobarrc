@@ -15,12 +15,14 @@ Config { font = "-misc-fixed-*-*-*-*-10-*-*-*-*-*-*-*"
        , iconRoot = "."w
        , allDesktops = True
        , overrideRedirect = True
-       , commands = [ Run Com "playerctl" [ "metadata", "title" ] "" 10
+       , commands = [ Run Com "/bin/sh" [ "-c", "~/.config/xmobar/title.sh" ] "title" 10
+                    , Run Com "/bin/sh" [ "-c", "~/.config/xmobar/button.sh" ] "button" 10
+                    , Run Com "/bin/sh" [ "-c", "~/.config/xmobar/next.sh" ] "next" 10
                     , Run Date "%r" "date" 10
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "| Editor | Terminal | Web Browser | Discord | Video Games | Spotify \
-                     \} <fc=#ff0000>%date%</fc> {\
-                     \%playerctl% | <action=`playerctl next` button=1>[ next ]</action>"
+       , template = "| 1: Editor | 2: Terminal | 3: Web Browser | 4: Discord | 5: Video Games | 6: Music \
+                     \} %date% {\
+                     \%title% <action=`playerctl -p spotify play-pause` button=1>%button%</action> <action=`playerctl -p spotify next` button=1>%next%</action>"
        }

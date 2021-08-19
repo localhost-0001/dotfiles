@@ -50,7 +50,7 @@ myXmobarrc = "~/.config/.xmobar/xmobarrc"
 -- Workspaces
 -- The default number of workspaces (virtual screens) and their names.
 --
-myWorkspaces = ["1:term","2:web","3:code","4:vm","5:media"] ++ map show [6..9]
+myWorkspaces = ["1:code","2:term","3:web","4:media","5:games", "6:music" ] ++ map show [7..9]
 
 
 ------------------------------------------------------------------------
@@ -68,17 +68,10 @@ myWorkspaces = ["1:term","2:web","3:code","4:vm","5:media"] ++ map show [6..9]
 -- 'className' and 'resource' are used below.
 --
 myManageHook = composeAll
-    [ className =? "Chromium"       --> doShift "2:web"
-    , className =? "Google-chrome"  --> doShift "2:web"
-    , resource  =? "desktop_window" --> doIgnore
-    , className =? "Galculator"     --> doFloat
-    , className =? "Steam"          --> doFloat
-    , className =? "Gimp"           --> doFloat
-    , resource  =? "gpicview"       --> doFloat
-    , className =? "MPlayer"        --> doFloat
-    , className =? "VirtualBox"     --> doShift "4:vm"
-    , className =? "Xchat"          --> doShift "5:media"
-    , className =? "stalonetray"    --> doIgnore
+    [ className =? "Code"           --> doShift "1:code"
+    , className =? "Firefox"        --> doShift "3:web"
+    , className =? "discord"        --> doShift "4:media"
+    , className =? "Spotify"        --> doShift "6:music"
     , isFullscreen --> (doF W.focusDown <+> doFullFloat)]
 
 
@@ -106,8 +99,8 @@ myLayout = avoidStruts (
 -- Colors and borders
 -- Currently based on the ir_black theme.
 --
-myNormalBorderColor  = "#7c7c7c"
-myFocusedBorderColor = "#ffb6b0"
+myNormalBorderColor  = "#ffffff"
+myFocusedBorderColor = "#ff0000"
 
 -- Colors for text and backgrounds of each tab when in "Tabbed" layout.
 tabConfig = defaultTheme {
@@ -351,7 +344,7 @@ myStartupHook = return ()
 -- Run xmonad with all the defaults we set up.
 --
 main = do
-  xmproc <- spawnPipe ("xmobar " ++ myXmobarrc)
+  xmproc <- spawnPipe ("xmobar & xmobar -x 1")
   xmonad $ defaults {
       logHook = dynamicLogWithPP $ xmobarPP {
             ppOutput = hPutStrLn xmproc
