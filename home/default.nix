@@ -14,5 +14,6 @@ in
     ./minecraft
     ./xmonad
     ./rofi
+    ./xmobar
   ];
 }

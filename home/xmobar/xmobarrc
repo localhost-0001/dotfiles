@@ -1,0 +1,26 @@
+Config { font = "-misc-fixed-*-*-*-*-10-*-*-*-*-*-*-*"
+       , additionalFonts = []
+       , borderColor = "black"
+       , border = TopB
+       , bgColor = "black"
+       , fgColor = "grey"
+       , alpha = 255
+       , position = Top
+       , textOffset = -1
+       , iconOffset = -1
+       , lowerOnStart = True
+       , pickBroadest = False
+       , persistent = False
+       , hideOnStart = False
+       , iconRoot = "."w
+       , allDesktops = True
+       , overrideRedirect = True
+       , commands = [ Run Com "playerctl" [ "metadata", "title" ] "" 10
+                    , Run Date "%r" "date" 10
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "| Editor | Terminal | Web Browser | Discord | Video Games | Spotify \
+                     \} <fc=#ff0000>%date%</fc> {\
+                     \%playerctl% | <action=`playerctl next` button=1>[ next ]</action>"
+       }

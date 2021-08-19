@@ -28,7 +28,8 @@
   environment.systemPackages = with pkgs;
   [
     haskellPackages.xmobar
-    firefox spotify discord
+    spotify playerctl
+    firefox discord
     alacritty
     git
     minecraft multimc
