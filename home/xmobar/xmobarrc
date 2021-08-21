@@ -19,10 +19,11 @@ Config { font = "-misc-fixed-*-*-*-*-10-*-*-*-*-*-*-*"
                     , Run Com "/bin/sh" [ "-c", "~/.config/xmobar/button.sh" ] "button" 10
                     , Run Com "/bin/sh" [ "-c", "~/.config/xmobar/next.sh" ] "next" 10
                     , Run Date "%r" "date" 10
+                    , Run StdinReader
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "| 1: Editor | 2: Terminal | 3: Web Browser | 4: Discord | 5: Video Games | 6: Music \
+       , template = "%StdinReader% \
                      \} %date% {\
                      \%title% <action=`playerctl -p spotify play-pause` button=1>%button%</action> <action=`playerctl -p spotify next` button=1>%next%</action>"
        }

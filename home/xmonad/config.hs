@@ -198,6 +198,10 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((0, 0x1008FF2C),
      spawn "eject -T")
 
+  -- Caps lock to ctrl
+  , ((0, xK_Caps_Lock),
+     spawn "xdotool key Control_L")
+
   --------------------------------------------------------------------
   -- "Standard" xmonad key bindings
   --
@@ -344,7 +348,7 @@ myStartupHook = return ()
 -- Run xmonad with all the defaults we set up.
 --
 main = do
-  xmproc <- spawnPipe ("xmobar & xmobar -x 1")
+  xmproc <- spawnPipe ("xmobar")
   xmonad $ defaults {
       logHook = dynamicLogWithPP $ xmobarPP {
             ppOutput = hPutStrLn xmproc
