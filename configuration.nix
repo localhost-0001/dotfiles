@@ -27,9 +27,11 @@
   # Package management
   environment.systemPackages = with pkgs;
   [
+    gimp
     haskellPackages.xmobar
     spotify playerctl
-    firefox discord
+    firefox
+    discord slack
     alacritty
     git
     minecraft multimc
