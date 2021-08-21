@@ -14,6 +14,8 @@
       enable = true;
       layout = "us";
 
+      videoDrivers = [ "amdgpu" ];
+
       displayManager = {
         defaultSession = "none+xmonad";
 
@@ -27,9 +29,6 @@
         enable = true;
         enableContribAndExtras = true;
       };
-
-      # I have never purposely used caps lock
-      xkbOptions = "caps:none";
     };
   };
 
