@@ -12,8 +12,15 @@
   # Set timezone
   time.timeZone = "America/New_York";
 
-  # Enables UEFI boot
-  boot.loader.systemd-boot.enable = true;
+  # GRUB with a windows entry
+  boot.loader.grub.enable = true;
+  boot.loader.grub.version = 2;
+  boot.loader.grub.device = "/dev/sda";
+  boot.loader.grub.extraEntries = ''
+    menuentry "Windows 10" {
+      chainloader (hd0,1)+1
+    }
+  '';
 
   # Defining users
   users.users.henry = {
@@ -36,12 +43,6 @@
     git
     minecraft multimc
   ];
-
-  # I don't really have much to do with my HDD so I mount it to its own directory
-  fileSystems."/home/henry/hdd" = {
-    device = "/dev/disk/by-label/hdd";
-    fsType = "ext4";
-  };
 
   # Sudoedit is very useful
   environment.variables.SUDO_EDITOR = "code --wait";
