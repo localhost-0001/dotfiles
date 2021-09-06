@@ -25,5 +25,5 @@ Config { font = "-misc-fixed-*-*-*-*-10-*-*-*-*-*-*-*"
        , alignSep = "}{"
        , template = "%StdinReader% \
                      \} %date% {\
-                     \%title% <action=`playerctl -p spotify play-pause` button=1>%button%</action> <action=`playerctl -p spotify next` button=1>%next%</action>"
+                     \%title% <action=`playerctl -p vlc play-pause` button=1>%button%</action> <action=`playerctl -p vlc next` button=1>%next%</action>"
        }

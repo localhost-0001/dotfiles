@@ -36,7 +36,7 @@
   [
     gimp
     haskellPackages.xmobar
-    spotify playerctl
+    spotify playerctl vlc
     firefox
     discord slack
     alacritty

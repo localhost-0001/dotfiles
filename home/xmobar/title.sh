@@ -1,6 +1,6 @@
 #!/bin/sh
-TITLE=$(playerctl -p spotify -s metadata title)
-ARTIST=$(playerctl -p spotify -s metadata artist)
+TITLE=$(playerctl -p vlc -s metadata title)
+ARTIST=$(playerctl -p vlc -s metadata artist)
 if [[ $TITLE != "" ]]
 then
   if [[ $ARTIST != "" ]]

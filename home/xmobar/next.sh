@@ -1,5 +1,5 @@
 #!/bin/sh
-STATUS=$(playerctl -p spotify -s status)
+STATUS=$(playerctl -p vlc -s status)
 
 # No options if no music is playing
 if [[ $STATUS != "" ]]
