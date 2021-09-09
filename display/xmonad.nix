@@ -17,7 +17,8 @@
       videoDrivers = [ "amdgpu" ];
 
       displayManager = {
-        defaultSession = "none+xmonad";
+        gdm.enable = true;
+	# defaultSession = "gdm+xmonad";
 
         # I used arandr to generate this command for organizing the displays
         sessionCommands = ''
