@@ -13,14 +13,17 @@
   time.timeZone = "America/New_York";
 
   # GRUB with a windows entry
-  boot.loader.grub.enable = true;
-  boot.loader.grub.version = 2;
-  boot.loader.grub.device = "/dev/sda";
-  boot.loader.grub.extraEntries = ''
-    menuentry "Windows 10" {
-      chainloader (hd0,1)+1
-    }
-  '';
+  boot.loader.grub = {    
+    enable = true;
+    version = 2;
+    device = "/dev/sda";
+    extraEntries = ''
+      menuentry "Windows 10" {
+        chainloader (hd0,1)+1
+      }
+    '';
+    splashImage = null;
+  };
 
   # Defining users
   users.users.henry = {
@@ -40,7 +43,7 @@
     firefox
     discord slack
     alacritty
-    git
+    git neovim
     minecraft multimc
   ];
 
