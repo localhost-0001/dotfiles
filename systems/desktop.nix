@@ -66,7 +66,7 @@ inputs: {
 
             xorg = {
               enable = true;
-              gpu = "amd";
+              gpu = "amdgpu";
               xmonad = true;
               xmobar = true;
               dunst = true;
@@ -107,9 +107,6 @@ inputs: {
         isNormalUser = true;
         extraGroups = [ "wheel" ];
       };
-
-      # Enable audio
-      hardware.pulseaudio.enable = true;
 
       nixpkgs.config.allowUnfree = true;
     })

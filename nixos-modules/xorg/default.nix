@@ -38,8 +38,12 @@ in {
       description = "Intel normal drivers";
     };
 
-    amnd = mkOption {
-      description = "Amd drivers";
+    amd = mkOption {
+      description = "Old Amd drivers";
+    };
+    
+    amdgpu = mkOption {
+      description = "Modern Amd drivers";
     };
   xmonad = mkEnableOption "Enable xmonad";
   kde = mkEnableOption "Enable kde";
@@ -120,6 +124,9 @@ in {
 
     (mkIf (cfg.gpu == "amd") {
 #      services.xserver.videoDrivers = ["ati"];
+    })
+    (mkIf (cfg.gpu == "amdgpu") {
+      services.xserver.videoDrivers = ["amdgpu"];
     })
   ]);
 }
