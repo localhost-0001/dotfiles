@@ -3,13 +3,6 @@
 with lib;
 let
   xserver-enable = config.services.xserver.enable;
-  nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
-    export __NV_PRIME_RENDER_OFFLOAD=1
-    export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
-    export __GLX_VENDOR_LIBRARY_NAME=nvidia
-    export __VK_LAYER_NV_optimus=NVIDIA_only
-    exec -a "$0" "$@"
-  '';
   cfg = config.teletypeOne.xorg;
 in {
   options.teletypeOne.xorg = {
