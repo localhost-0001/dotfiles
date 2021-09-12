@@ -21,20 +21,8 @@
 
       in {
 
-        nixosConfigurations.ProGo = nixosSystem (import ./systems/ProGo.nix inputs);
-        ProGo = self.nixosConfigurations.ProGo.config.system.build.toplevel;
-
-        nixosConfigurations.ProNoGo = nixosSystem (import ./systems/ProNoGo.nix inputs);
-        ProNoGo = self.nixosConfigurations.ProGo.config.system.build.toplevel;
-
-        nixosConfigurations.ProNoBrain = nixosSystem (import ./systems/ProNoBrain.nix inputs);
-        ProNoBrain = self.nixosConfigurations.ProGo.config.system.build.toplevel;
-
-        nixosConfigurations.ProSlowGo = nixosSystem (import ./systems/ProSlowGo.nix inputs);
-        ProSlowGo = self.nixosConfigurations.ProGo.config.system.build.toplevel;
-
-        nixosConfigurations.ProVerySlowGo = nixosSystem (import ./systems/ProVerySlowGo.nix inputs);
-        ProVerySlowGo = self.nixosConfigurations.ProGo.config.system.build.toplevel;
+        nixosConfigurations.desktop = nixosSystem (import ./systems/desktop.nix inputs);
+        desktop = self.nixosConfigurations.desktop.config.system.build.toplevel;
 
         allSystems =
           let
@@ -50,15 +38,11 @@
             {
               x86_64-linux = linkFarm "x86_64-linux"
                 {
-                   ProGo = nixos "ProGo";
-                   ProNoGo = nixos "ProNoGo";
-                   ProNoBrain = nixos "ProNoBrain";
-                   ProSlowGo = nixos "ProSlowGo";
-                   ProVerySlowGo = nixos "ProVerySlowGo";
+                   desktop = nixos "desktop";
                 };
             };
         overlays = {
-          # NONE LOL
+
         };
         packages =
           forAllSystems (system:
@@ -71,9 +55,7 @@
                              }).teletypeOne."${package}";
               mkPkg' = mkPkg'' nixpkgs-unstable;
               mkPkg = name: mkPkg'' nixpkgs-unstable name name;
-            in
-              {
-      #                        easy-hls-nix = if system == "x86_64-linux" then mkPkg "easy-hls-nix" else (import nixpkgs-unstable { inherit system; }).hello;
-              });
+            in { }
+          );
       };
 }

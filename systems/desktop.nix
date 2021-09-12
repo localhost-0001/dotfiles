@@ -12,17 +12,17 @@ inputs: {
 
             terminals = {
               alacritty = true;
-              termite = true;
+              termite = false;
             };
 
             filemanagers = {
-              gui = true;
-              tui = true;
+              gui = false;
+              tui = false;
             };
 
             zsh = {
-              enabled = true;
-              ohMy = true;
+              enabled = false;
+              ohMy = false;
             };
 
             games = {
@@ -30,7 +30,7 @@ inputs: {
               minecraft = false;
             };
 
-            pulseaudio.enable = false;
+            pulseaudio.enable = true;
             pipwire.enable = false;
 
             fonts = {
@@ -38,29 +38,29 @@ inputs: {
             };
 
             communication = {
-              free = true;
+              free = false;
               nonFree = true;
-              bullshit = true;
+              bullshit = false;
             };
 
             util = {
               xmonadUtil = true;
               neofetch = true;
-              music = true;
-              screenshot = true;
-              theming = true;
-              topFamily = true;
-              driveUtil = true;
-              emacs = true;
-              media = true;
+              music = false;
+              screenshot = false;
+              theming = false;
+              topFamily = false;
+              driveUtil = false;
+              emacs = false;
+              media = false;
               encoding = false;
               pulseUtil = true;
-              textUtil = true;
+              textUtil = false;
               office = false;
-              password = true;
-              compilerUtil = true;
-              haskell = true;
-              termUtil = true;
+              password = false;
+              compilerUtil = false;
+              haskell = false;
+              termUtil = false;
               painting = false;
             };
 
@@ -76,31 +76,40 @@ inputs: {
             };
 
             networking  = {
-              bluetooth = true;
-              networkManager = true;
+              bluetooth = false;
+              networkManager = false;
             };
 
-            hardware.ProGo = true;
+            hardware.desktop = true;
             flakes.enable = true;
-
           };
         }
     )
   ] ++ [
     ({ pkgs, ... }: {
-      networking = {
-        hostName = "ProGo";
-        useDHCP = false;
-        hostId = "3457b394";
+      time.timeZone = "America/New_York";
+
+      # GRUB with a windows entry
+      boot.loader.grub = {
+        enable = true;
+        version = 2;
+        device = "/dev/sda";
+        extraEntries = ''
+          menuentry "Windows 10" {
+            chainloader (hd0,1)+1
+          }
+        '';
+        splashImage = null;
       };
 
-      boot.loader.grub.enable = true;
-      boot.loader.grub.version = 2;
-      boot.loader.grub.device = "nodev";
-      nixpkgs.config.allowUnfree = true;
+      # Defining users
+      users.users.henry = {
+        isNormalUser = true;
+        extraGroups = [ "wheel" ];
+      };
 
-      time.timeZone = "Europe/Berlin";
-      system.stateVersion = "21.05";
+      # Enable audio
+      hardware.pulseaudio.enable = true;
     })
   ];
 }
