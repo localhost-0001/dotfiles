@@ -7,11 +7,7 @@ in
   options = {};
   imports =
     [
-      ./ProGo.nix
-      ./ProNoGo.nix
-      ./ProNoBrain.nix
-      ./ProSlowGo.nix
-      ./ProVerySlowGo.nix
+      ./desktop.nix
     ];
   config = {
     assertions = [
